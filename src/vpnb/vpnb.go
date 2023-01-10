@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"math/rand"
+	"os"
 	"strconv"
 
 	"github.com/electrocrem/vpn_server/cmd/oss"
@@ -54,20 +55,21 @@ func GeneratePofile(bot *tgbotapi.BotAPI, update tgbotapi.Update) tgbotapi.Messa
 	randomName := "profile" + strconv.Itoa(rand.Intn(1000000))
 	fmt.Printf("%v", randomName)
 	oss.LaunchScript("/bin/bash", "./generate_profile.sh", randomName)
-	filePath := "" + randomName + ".ovpn"
+	filePath := "/profiles/" + randomName + ".ovpn"
 	fmt.Printf("\n%v\n", filePath)
 	profileBytes, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		panic(err)
 	}
 	profileFileBytes := tgbotapi.FileBytes{
-		Name:  filePath,
+		Name:  randomName + ".ovpn",
 		Bytes: profileBytes,
 	}
 	message, err := bot.Send(tgbotapi.NewDocument(update.Message.Chat.ID, profileFileBytes))
 	if err != nil {
 		panic(err)
 	}
+	os.Remove(filePath)
 	return message
 
 }
