@@ -8,7 +8,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/electrocrem/vpn_server/cmd/oss"
+	"github.com/electrocrem/vpn_core_bot/src/oss"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
