@@ -30,12 +30,15 @@ func BotStateMachine(bot *tgbotapi.BotAPI) {
 
 		// Extract the command from the Message.
 		msg.Text = "Приветы! Я предаставляю доступ к VPN серверу, чтобы получить профиль набери команду" +
-			"`/genprof`\n Сервер сам находится в Германии, в будущем будет больше локаций"
+			"/genprof\n"
 		switch update.Message.Command() {
+		case "start":
+			msg.Text = "Приветы! Я предаставляю доступ к VPN серверу, чтобы получить профиль набери команду" +
+				"`/genprof`\n"
 		case "help":
 			msg.Text = "Я знаю только одну команду /genprof"
 		case "genprof":
-			msg.Text = "Профиль готов! Установи приложение OPENVPN:\n" +
+			msg.Text = "Профиль готов! Установи приложение **OPEN VPN**:\n" +
 				"Для PC: https://openvpn.net/community-downloads/\n" +
 				"Для IOS: https://apps.apple.com/us/app/openvpn-connect/id590379981 \n" +
 				"Для Android: https://play.google.com/store/apps/details?id=net.openvpn.openvpn&hl=en&gl=US \n"
@@ -55,7 +58,7 @@ func GeneratePofile(bot *tgbotapi.BotAPI, update tgbotapi.Update) tgbotapi.Messa
 	randomName := "profile" + strconv.Itoa(rand.Intn(1000000))
 	fmt.Printf("%v", randomName)
 	oss.LaunchScript("/bin/bash", "./generate_profile.sh", randomName)
-	filePath := "/profiles/" + randomName + ".ovpn"
+	filePath := "profiles/" + randomName + ".ovpn"
 	fmt.Printf("\n%v\n", filePath)
 	profileBytes, err := ioutil.ReadFile(filePath)
 	if err != nil {
