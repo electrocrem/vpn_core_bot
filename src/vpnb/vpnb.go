@@ -15,7 +15,7 @@ import (
 func BotStateMachine(bot *tgbotapi.BotAPI) {
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 60
-	updates := bot.GetUpdatesChan(u)
+	updates, _ := bot.GetUpdatesChan(u)
 
 	for update := range updates {
 		if update.Message == nil {
@@ -68,7 +68,7 @@ func GeneratePofile(bot *tgbotapi.BotAPI, update tgbotapi.Update) tgbotapi.Messa
 		Name:  randomName + ".ovpn",
 		Bytes: profileBytes,
 	}
-	message, err := bot.Send(tgbotapi.NewDocument(update.Message.Chat.ID, profileFileBytes))
+	message, err := bot.Send(tgbotapi.NewDocumentUpload(update.Message.Chat.ID, profileFileBytes))
 	if err != nil {
 		panic(err)
 	}
