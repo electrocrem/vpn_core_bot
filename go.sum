@@ -1,0 +1,6 @@
+github.com/electrocrem/vpn_core_bot v0.0.0-20230114081945-c19610d31489 h1:XeqDyFyEdRQQ2ONoCydV9tXIV7N8H37/CnC1Fq6YPB0=
+github.com/electrocrem/vpn_core_bot v0.0.0-20230114081945-c19610d31489/go.mod h1:L8TmyyobYoEaiwJuJTqQQQVXaYCOCgsBtIk2tBNItjs=
+github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible h1:2cauKuaELYAEARXRkq2LrJ0yDDv1rW7+wrTEdVL3uaU=
+github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible/go.mod h1:qf9acutJ8cwBUhm1bqgz6Bei9/C/c93FPDljKWwsOgM=
+github.com/technoweenie/multipartstreamer v1.0.1 h1:XRztA5MXiR1TIRHxH2uNxXxaIkKQDeX7m2XsSOlQEnM=
+github.com/technoweenie/multipartstreamer v1.0.1/go.mod h1:jNVxdtShOxzAsukZwTSw6MDx5eUJoiEBsSvzDU9uzog=
